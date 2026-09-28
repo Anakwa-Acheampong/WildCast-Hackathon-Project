@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WildCast Ghana — A weather forecast, for wildlife</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <span class="logo-mark">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M4 17 Q7 9 12 9 Q17 9 20 17" stroke="#F6EFE0" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <circle cx="12" cy="5.5" r="2.4" fill="#E0A32E"/>
+        </svg>
+      </span>
+      <span class="logo-name">Wild<em>Cast</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#forecast">Forecast</a></li>
+      <li><a href="#map">Map</a></li>
+      <li><a href="#plan">Plan a visit</a></li>
+      <li><a href="#guides">For guides</a></li>
+      <li><a href="#passport">Passport</a></li>
+      <li><a href="#how" class="nav-cta">How it works</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-sun"></div>
+  <svg class="hero-contours" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#2A4A33" stroke-width="1.2">
+      <path d="M-50,620 C300,540 500,660 800,590 C1100,520 1250,640 1500,570"/>
+      <path d="M-50,560 C280,470 520,600 820,520 C1120,450 1260,580 1500,500"/>
+      <path d="M-50,500 C260,400 540,540 840,450 C1140,380 1280,520 1500,430"/>
+      <path d="M-50,440 C240,330 560,480 860,380 C1160,300 1300,460 1500,360"/>
+      <path d="M-50,380 C220,260 580,420 880,310 C1180,230 1320,400 1500,290"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <span class="hero-badge"><span class="dot"></span> Live demo &middot; Mole National Park</span>
+    <h1>Know before <em>you go.</em></h1>
+    <p class="hero-lede">
+      Tourists travel twelve hours to Mole hoping to see an elephant — and whether they do is <strong>pure luck</strong>.
+      WildCast changes that. Our AI studies what park guides see every day, and turns it into a simple daily forecast:
+      <strong>which animals, which part of the park, what time of day.</strong> Like a weather forecast — but for wildlife.
+    </p>
+    <div class="hero-actions">
+      <a href="#map" class="btn btn-primary">See today's forecast map</a>
+      <a href="#how" class="btn btn-ghost">How does it work?</a>
+    </div>
+
+    <!-- Today's board -->
+    <div class="board" id="forecast">
+      <div class="board-head">
+        <div class="board-title">Today's sighting forecast</div>
+        <div class="board-date" id="boardDate">—</div>
+      </div>
+      <div class="park-chips">
+        <button class="park-chip active">Mole National Park</button>
+        <button class="park-chip soon" title="Demo covers Mole first">Kakum <span>· soon</span></button>
+        <button class="park-chip soon" title="Demo covers Mole first">Shai Hills <span>· soon</span></button>
+        <button class="park-chip soon" title="Demo covers Mole first">Boabeng-Fiema <span>· soon</span></button>
+      </div>
+      <div class="board-grid" id="boardGrid"><!-- cards injected --></div>
+      <p class="board-note">▲ Best time today: early morning (06:00 – 09:00) · Forecast updates as guides log new sightings · Demo running on simulated data</p>
+    </div>
+  </div>
+</header>
+
+<!-- ================= PLAIN WORDS ================= -->
+<section class="plain">
+  <div class="wrap plain-grid" data-reveal>
+    <h2>Never heard of a wildlife forecast? <em>It's this simple.</em></h2>
+    <div class="plain-step">
+      <span class="num">01</span>
+      <h3>Guides record what they see</h3>
+      <p>Every day, park guides already spot elephants, antelope and baboons on their walks. They tap it into a simple phone form — ten seconds per sighting.</p>
+    </div>
+    <div class="plain-step">
+      <span class="num">02</span>
+      <h3>The AI learns the patterns</h3>
+      <p>Animals are creatures of habit — waterholes at dawn in the dry season, shade at midday. Our model learns these rhythms from thousands of sightings, weather and seasons.</p>
+    </div>
+    <div class="plain-step">
+      <span class="num">03</span>
+      <h3>You get a forecast</h3>
+      <p>Before and during your visit, you see the odds: <b>"Elephants — 82% this morning at the waterholes."</b> Plan your walk around it. Leave with memories, not maybes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAP ================= -->
+<section class="map-section" id="map">
+  <div class="wrap">
+    <div data-reveal>
+      <span class="kicker">Interactive forecast map</span>
+      <h2 class="section-title">Where will the animals be <em style="font-style:italic;color:var(--terra)">right now?</em></h2>
+      <p class="section-sub">Pick an animal and a time of day. The map shows the likelihood of a sighting in each zone of Mole National Park — tap any zone for its full forecast.</p>
+    </div>
+
+    <div class="map-controls" data-reveal>
+      <div class="species-chips" id="speciesChips"></div>
+      <div class="time-toggle" id="timeToggle">
+        <button class="time-btn active" data-time="morning">Morning</button>
+        <button class="time-btn" data-time="afternoon">Afternoon</button>
+        <button class="time-btn" data-time="evening">Evening</button>
+      </div>
+    </div>
+
+    <div class="map-layout" data-reveal>
+      <div class="map-canvas">
+        <span class="map-tag">Stylised zone map · Mole N.P.</span>
+        <svg viewBox="0 0 820 640" id="parkMap" role="img" aria-label="Interactive zone map of Mole National Park">
+          <!-- park boundary -->
+          <path d="M 120,90 C 220,40 380,40 470,60 C 570,80 690,110 740,200 C 780,270 770,370 740,450 C 710,530 620,590 520,600 C 420,612 300,600 210,560 C 120,520 60,440 60,340 C 60,230 60,130 120,90 Z"
+                fill="#EAE3CB" stroke="#9DB48A" stroke-width="2.5" stroke-dasharray="7 5"/>
+          <!-- rivers -->
+          <path d="M 430,62 C 420,140 452,200 422,260 C 396,310 380,380 396,455" fill="none" stroke="#7FA3A0" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+          <path d="M 700,145 C 660,220 640,300 641,380 C 641,440 660,480 688,520" fill="none" stroke="#7FA3A0" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+
+          <!-- zones -->
+          <g class="zone" data-zone="brugbani" tabindex="0">
+            <path d="M 140,150 C 180,110 290,105 330,140 C 370,175 365,235 325,265 C 280,298 180,295 145,255 C 115,222 108,182 140,150 Z"/>
+            <text class="z-name" x="235" y="195" text-anchor="middle">Brugbani Plains</text>
+            <text class="z-pct" x="235" y="218" text-anchor="middle">—</text>
+          </g>
+          <g class="zone" data-zone="lovi" tabindex="0">
+            <path d="M 560,120 C 620,100 680,130 700,190 C 718,245 700,300 660,330 C 620,358 560,345 540,300 C 520,255 515,155 560,120 Z"/>
+            <text class="z-name" x="613" y="220" text-anchor="middle">Lovi Corridor</text>
+            <text class="z-pct" x="613" y="243" text-anchor="middle">—</text>
+          </g>
+          <g class="zone" data-zone="samole" tabindex="0">
+            <path d="M 350,290 C 400,260 480,265 515,300 C 548,332 545,392 505,420 C 462,450 380,448 345,415 C 312,383 310,318 350,290 Z"/>
+            <text class="z-name" x="430" y="350" text-anchor="middle">Samole Loop</text>
+            <text class="z-pct" x="430" y="373" text-anchor="middle">—</text>
+          </g>
+          <g class="zone" data-zone="konkori" tabindex="0">
+            <path d="M 110,360 C 150,330 220,340 255,375 C 288,408 290,460 255,495 C 220,530 150,532 118,498 C 90,468 78,395 110,360 Z"/>
+            <text class="z-name" x="185" y="425" text-anchor="middle">Konkori Escarpment</text>
+            <text class="z-pct" x="185" y="448" text-anchor="middle">—</text>
+          </g>
+          <g class="zone" data-zone="waterholes" tabindex="0">
+            <path d="M 340,455 C 375,432 440,432 470,458 C 498,482 495,528 462,548 C 428,568 368,565 340,542 C 315,520 312,478 340,455 Z"/>
+            <text class="z-name" x="402" y="492" text-anchor="middle">Waterhole Flats</text>
+            <text class="z-pct" x="402" y="515" text-anchor="middle">—</text>
+          </g>
+          <g class="zone" data-zone="airstrip" tabindex="0">
+            <path d="M 545,430 C 590,405 665,410 695,445 C 723,478 718,530 680,555 C 640,582 570,578 540,548 C 513,520 510,455 545,430 Z"/>
+            <text class="z-name" x="616" y="488" text-anchor="middle">Airstrip Grasslands</text>
+            <text class="z-pct" x="616" y="511" text-anchor="middle">—</text>
+          </g>
+
+          <!-- waterhole dots -->
+          <ellipse cx="392" cy="530" rx="9" ry="6" fill="#7FA3A0"/>
+          <ellipse cx="424" cy="540" rx="6" ry="4" fill="#7FA3A0"/>
+
+          <!-- compass -->
+          <g transform="translate(715,88)" opacity=".75">
+            <circle r="20" fill="none" stroke="#4C5A44" stroke-width="1.4"/>
+            <path d="M0,-14 L4,4 L0,0 L-4,4 Z" fill="#C75B2A"/>
+            <text y="-26" text-anchor="middle" font-family="Space Mono" font-size="11" fill="#4C5A44">N</text>
+          </g>
+        </svg>
+        <div class="map-legend">
+          <span class="legend-item"><span class="legend-swatch" style="background:#E4E0C8"></span> Unlikely</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#E7C878"></span> Possible</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#E0A32E"></span> Likely</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#C75B2A"></span> Very likely</span>
+        </div>
+      </div>
+
+      <aside class="zone-panel" id="zonePanel">
+        <span class="zp-kicker" id="zpKicker">Zone forecast</span>
+        <h3 id="zpName">Tap a zone</h3>
+        <p class="zp-sub" id="zpSub">Select any zone on the map to see the full species forecast for that area.</p>
+        <div class="zp-rows" id="zpRows"></div>
+        <div class="best-bet" id="bestBet"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLAN ================= -->
+<section class="plan-section" id="plan">
+  <div class="wrap">
+    <div data-reveal>
+      <span class="kicker">Plan your visit</span>
+      <h2 class="section-title">Come in the <em style="font-style:italic;color:var(--amber)">right season,</em> not just the right day.</h2>
+      <p class="section-sub">Wildlife viewing in Ghana changes dramatically through the year. In the dry season (November – April) animals gather at waterholes; in the rains they scatter. Here's the whole year at a glance.</p>
+    </div>
+
+    <div class="plan-layout">
+      <div class="season-card" data-reveal>
+        <div class="season-head">
+          <span style="text-align:left"></span>
+          <span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span>
+          <span style="text-align:right">Peak</span>
+        </div>
+        <div id="seasonRows"></div>
+        <p class="season-note">Darker = better viewing odds that month · Simulated seasonal data for Mole N.P.</p>
+      </div>
+
+      <div class="booking-card" data-reveal>
+        <h3>Reserve a guided walk</h3>
+        <p class="bk-sub">Forecast-matched slots — we suggest the walk with the best odds for the animals you want to see.</p>
+        <div class="bk-field">
+          <label>Visit date</label>
+          <input type="date" id="bkDate">
+        </div>
+        <div class="bk-field">
+          <label>Walk slot</label>
+          <div class="slot-chips" id="slotChips">
+            <button class="slot-chip active">06:30 Walk<small>★ best odds</small></button>
+            <button class="slot-chip">15:30 Walk<small>good</small></button>
+            <button class="slot-chip">19:30 Night drive<small>fair</small></button>
+          </div>
+        </div>
+        <div class="bk-field">
+          <label>Party size</label>
+          <select><option>2 people</option><option>1 person</option><option>3 – 5 people</option><option>6+ (group)</option></select>
+        </div>
+        <button class="btn btn-primary bk-btn" id="bkBtn">Reserve this walk</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GUIDES ================= -->
+<section class="guide-section" id="guides">
+  <div class="wrap">
+    <div data-reveal>
+      <span class="kicker">Where the data comes from</span>
+      <h2 class="section-title">Built on the eyes of Ghana's park guides.</h2>
+      <p class="section-sub">No expensive sensors needed to start. Guides already see the animals every day — WildCast just gives them a ten-second way to record it. Try the logging form yourself; your sighting will appear in the live feed.</p>
+    </div>
+
+    <div class="guide-layout">
+      <div class="phone" data-reveal>
+        <div class="phone-screen">
+          <div class="phone-head">
+            <div class="ph-app">Wild<em>Cast</em> Ranger</div>
+            <div class="ph-park">Mole National Park · Guide mode</div>
+          </div>
+          <div class="phone-body">
+            <span class="gps-chip"><span class="dot"></span> GPS: zone auto-detected</span>
+            <div class="ph-label">What did you see?</div>
+            <div class="sp-grid" id="logSpecies"></div>
+            <div class="ph-label">How many?</div>
+            <div class="count-row">
+              <button class="count-btn" id="countMinus">−</button>
+              <span class="count-val" id="countVal">3</span>
+              <button class="count-btn" id="countPlus">+</button>
+            </div>
+            <div class="ph-label">Zone</div>
+            <select class="ph-select" id="logZone"></select>
+            <button class="log-btn" id="logBtn">📍 Log sighting</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-copy" data-reveal>
+        <h3>Every sighting makes tomorrow's forecast smarter.</h3>
+        <p class="section-sub">Sightings sync when the guide is back in signal range — the app works fully offline on the trail. Each log takes seconds, and guides with the most contributions earn recognition on the park leaderboard.</p>
+        <div class="feed-head">
+          <h4>Recent sightings — Mole N.P.</h4>
+          <span class="live-dot">Live</span>
+        </div>
+        <div class="feed" id="feed"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PASSPORT ================= -->
+<section class="passport-section" id="passport">
+  <div class="wrap">
+    <div data-reveal>
+      <span class="kicker">After your visit</span>
+      <h2 class="section-title">Leave with a story worth <em style="font-style:italic;color:var(--terra)">stamping.</em></h2>
+    </div>
+
+    <div class="passport-layout">
+      <div class="passport" data-reveal>
+        <div class="pp-head">
+          <span class="pp-title">Ghana Wildlife Passport</span>
+          <span class="pp-crest">🇬🇭</span>
+        </div>
+        <div class="pp-holder">
+          <div class="f"><label>Explorer</label><div>Ama Owusu</div></div>
+          <div class="f"><label>Park</label><div>Mole N.P.</div></div>
+          <div class="f"><label>Visit</label><div>14 – 16 Sep 2026</div></div>
+        </div>
+        <div class="stamps" id="stamps"></div>
+        <div class="pp-progress">
+          <div class="lbl"><span>Species spotted</span><span id="ppCount">5 of 8</span></div>
+          <div class="pp-bar"><i id="ppBar"></i></div>
+        </div>
+      </div>
+
+      <div class="passport-copy" data-reveal>
+        <h3>Every visitor becomes the park's best advert.</h3>
+        <p class="section-sub">When a guide logs a sighting on your walk, your digital passport is stamped automatically. Collect species across every park in Ghana — then share your passport with one tap.</p>
+        <ul class="pp-points">
+          <li><span class="ico">✦</span><span><b>Automatic stamps</b> — no forms for tourists; the guide's log stamps everyone on the walk.</span></li>
+          <li><span class="ico">↗</span><span><b>Built to be shared</b> — every passport posted to social media is free, authentic marketing for Ghana's parks.</span></li>
+          <li><span class="ico">◎</span><span><b>Reasons to return</b> — missed the buffalo? Your passport shows the gap, and the forecast tells you the best month to come back.</span></li>
+        </ul>
+        <div class="hero-actions" style="margin-top:1.6rem">
+          <button class="btn btn-primary" id="shareBtn">Share my passport</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="how-section" id="how">
+  <div class="wrap">
+    <div data-reveal>
+      <span class="kicker">How it works</span>
+      <h2 class="section-title">Simple pipeline. Honest AI.</h2>
+      <p class="section-sub">No black boxes — here's exactly what the system does, what data feeds it, and what it automates.</p>
+    </div>
+
+    <div class="how-grid" data-reveal>
+      <div class="how-card">
+        <div class="how-num">01.</div>
+        <h3>Collect</h3>
+        <p>Guides and rangers log sightings on a simple offline-first form. Historical patrol records seed the system from day one — no cold start.</p>
+        <div class="data-tags">
+          <span class="data-tag">Guide sighting logs</span>
+          <span class="data-tag">SMART ranger patrol data</span>
+          <span class="data-tag">GMet weather</span>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02.</div>
+        <h3>Learn</h3>
+        <p>A gradient-boosted probability model learns each species' rhythms — season, time of day, rainfall, waterhole levels — and outputs a likelihood per zone, refreshed daily.</p>
+        <div class="data-tags">
+          <span class="data-tag">Season &amp; rainfall</span>
+          <span class="data-tag">Time of day</span>
+          <span class="data-tag">Zone history</span>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03.</div>
+        <h3>Forecast</h3>
+        <p>Visitors see plain-language odds on the web — before booking and during the visit. Park managers get the same data as visitor-flow and conservation insight.</p>
+        <div class="data-tags">
+          <span class="data-tag">Daily forecast map</span>
+          <span class="data-tag">Seasonal planner</span>
+          <span class="data-tag">Wildlife passport</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="safeguard" data-reveal>
+      <div class="shield">🛡️</div>
+      <div>
+        <h3>Designed so it can never help a poacher.</h3>
+        <p>Locations are shown at <b>zone level only</b> — never GPS points. Public forecasts run on a <b>time delay</b>, and <b>sensitive species</b> (like pangolin) are excluded from all public views. Precise data stays inside the Forestry Commission's existing SMART patrol system.</p>
+      </div>
+    </div>
+
+    <p class="smart-line" data-reveal>
+      Built on <b>SMART</b> — the Spatial Monitoring and Reporting Tool Ghana's rangers already use.
+      From protected areas to <b>SMART destinations</b>, literally.
+    </p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="logo-name">Wild<em>Cast</em> Ghana</span>
+        <p>A weather forecast, for wildlife. Turning every guide's daily walk into smarter visits, happier tourists and better-understood parks.</p>
+      </div>
+      <div class="foot-meta">
+        <b>World Tourism Day 2026 Hackathon</b><br>
+        Forestry Commission of Ghana · Head Office<br>
+        Track B — AI-Enhanced Visitor Experience<br>
+      </div>
+    </div>
+    <hr class="foot-rule">
+    <div class="foot-bottom">
+      <span>Demo prototype · simulated data · Mole National Park</span>
+      <span>"From Protected Areas to SMART Destinations"</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><span class="t-ico">✓</span><span id="toastMsg"></span></div>
+
+<script src="app.js"></script>
+</body>
+</html>
