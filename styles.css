@@ -483,6 +483,21 @@ footer{background:var(--forest-3);color:rgba(246,239,224,.65);padding:56px 0 40p
 .foot-meta b{color:var(--amber)}
 .foot-rule{border:none;border-top:1px solid rgba(246,239,224,.15);margin:2rem 0 1.2rem}
 .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;font-family:var(--font-mono);font-size:.64rem}
+.foot-signature {
+  text-align: center;
+  padding-top: 1.25rem;
+  margin-top: 1.25rem;
+  border-top: 1px solid rgba(218, 232, 228, 0.15);
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+.foot-signature a {
+  color: #E9C46A;
+  text-decoration: none;
+}
+.foot-signature a:hover {
+  text-decoration: underline;
+}
 
 /* ---------- toast ---------- */
 .toast{
